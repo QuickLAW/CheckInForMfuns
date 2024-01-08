@@ -5,7 +5,7 @@ import requests
 import headers
 import gen_header
 import schedule
-import utiles
+import tools
 # 应对数据包br压缩而导入的库
 # 不导入直接打包requests获取的数据可能乱码
 # 也可以在请求头中去除br来规避
@@ -163,7 +163,7 @@ class Session_Manager():
         # 自动签到
         while True:
             input_time = input("请输入每天定时签到的时间(格式 HH:MM): ")
-            input_time = utiles.format_time(input_time)
+            input_time = tools.format_time(input_time)
             if input_time != -1:
                 self.logger.info(f"每日签到时间设定为：{input_time}")
                 schedule.every().day.at(input_time).do(self.sign)
